@@ -36,5 +36,10 @@ namespace Vidly.Controllers
 
             return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
         }
+
+        public ActionResult ByReleaseDate(int year, byte month)
+        {
+            return Content($"{year}/{month}");
+        }
     }
 }
