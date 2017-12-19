@@ -51,7 +51,7 @@ namespace Vidly.Controllers
         }
 
         //
-        // GET: /Manage/Index
+        // GET: /Manage/Random
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
