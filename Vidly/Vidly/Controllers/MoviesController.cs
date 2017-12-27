@@ -10,6 +10,12 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private List<Movie> Movies = new List<Movie>()
+        {
+            new Movie() {Id = 1, Name = "Shrek"},
+            new Movie() {Id = 2, Name = "Wall-e"}
+        };
+
         // GET: Movies
         public ViewResult Random()
         {
@@ -46,7 +52,9 @@ namespace Vidly.Controllers
                 sortBy = "Name";
             }
 
-            return Content($"pageIndex={pageIndex}&sortBy={sortBy}");
+            var model = Movies;
+
+            return View(model);
         }
 
         [Route(@"movies/released/{year:regex(\d{4})}/{month:regex(\d{2}):range(1,12)}")]
