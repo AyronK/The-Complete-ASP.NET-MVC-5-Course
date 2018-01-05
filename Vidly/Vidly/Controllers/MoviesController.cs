@@ -32,6 +32,16 @@ namespace Vidly.Controllers
             return View(movies);
         }
 
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            if (movie is null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
         [Route(@"movies/released/{year:regex(\d{4})}/{month:regex(\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, byte month)
         {

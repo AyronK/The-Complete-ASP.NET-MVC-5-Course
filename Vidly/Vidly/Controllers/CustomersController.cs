@@ -37,7 +37,6 @@ namespace Vidly.Controllers
                 return HttpNotFound();
             }
             return View(model);
-
         }
     }
 }
