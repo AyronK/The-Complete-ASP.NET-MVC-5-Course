@@ -1,4 +1,5 @@
-﻿@model System.Collections.Generic.List<Vidly.Models.Movie>
+﻿@using Vidly.Controllers
+@model IEnumerable<Vidly.Models.Movie>
 
 @{
     ViewBag.Title = "Index";
@@ -6,6 +7,8 @@
 }
 
 <h2>Movies</h2>
+
+<p><a class="btn btn-primary" href="@Url.Action(nameof(MoviesController.MovieForm),"Movies")">New movie</a></p>
 
 @if (Model == null || !Model.Any())
 {
@@ -24,7 +27,7 @@ else
             @foreach (var movie in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(movie.Name, "Details", "Movies", new {id = movie.Id}, null)</td>
+                    <td>@Html.ActionLink(movie.Name, nameof(MoviesController.Edit), "Movies", new { id = movie.Id }, null)</td>
                     <td>@movie.Genre.Name</td>
                 </tr>
             }

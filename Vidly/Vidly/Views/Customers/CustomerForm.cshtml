@@ -3,7 +3,7 @@
 @model Vidly.ViewModels.CustomerFormViewModel
 
 @{
-    var isBeingUpdated = Model.Customer.Id != 0;
+    var isBeingUpdated = Model.Customer != null && Model.Customer.Id != 0;
 
     ViewBag.Title = isBeingUpdated ? "Edit" : "New";
     Layout = "~/Views/Shared/_Layout.cshtml";

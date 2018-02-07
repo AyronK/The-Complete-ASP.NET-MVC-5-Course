@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Vidly.Models.Customer>
+﻿@using Vidly.Controllers
+@model IEnumerable<Vidly.Models.Customer>
 
 @{
     ViewBag.Title = "Index";
@@ -6,6 +7,8 @@
 }
 
 <h2>Customers</h2>
+
+<p><a class="btn btn-primary" href="@Url.Action(nameof(CustomersController.CustomerForm),"Customers")">New customer</a></p>
 
 @if (Model == null || !Model.Any())
 {
