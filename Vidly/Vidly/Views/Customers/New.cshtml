@@ -15,7 +15,7 @@
         @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Customer.Name)
+        @Html.LabelFor(m => m.Customer.Birthday)
         @Html.TextBoxFor(m => m.Customer.Birthday, new { @class = "form-control" })
     </div>
     <div class="checkbox">
@@ -27,4 +27,6 @@
         @Html.LabelFor(m => m.Customer.MembershipTypeId)
         @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, nameof(MembershipType.Id), nameof(MembershipType.Name)), "Select Membership Type", new { @class = "form-control" })
     </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
 }
