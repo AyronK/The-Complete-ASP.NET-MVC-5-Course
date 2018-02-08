@@ -52,6 +52,16 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerFormViewModel()
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View(nameof(CustomerForm), viewModel);
+            }
+
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
@@ -63,6 +73,16 @@ namespace Vidly.Controllers
         {
             if (customer.Id != 0)
             {
+                if (!ModelState.IsValid)
+                {
+                    var viewModel = new CustomerFormViewModel()
+                    {
+                        Customer = customer,
+                        MembershipTypes = _context.MembershipTypes.ToList()
+                    };
+                    return View(nameof(CustomerForm), viewModel);
+                }
+
                 var customerInDB = _context.Customers.Single(c => c.Id == customer.Id);
 
                 customerInDB.Name = customer.Name;
