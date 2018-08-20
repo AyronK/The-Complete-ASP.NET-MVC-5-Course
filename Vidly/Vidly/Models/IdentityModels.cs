@@ -13,6 +13,12 @@ namespace Vidly.Models
         [Required]
         [StringLength(255)]
         public string DrivingLicense { get; set; }
+        
+        [Required]
+        [Display(Name = "Phone Number")]
+        [StringLength(50)]
+        [DataType(DataType.PhoneNumber)]
+        public override string PhoneNumber { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
